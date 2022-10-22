@@ -4,6 +4,7 @@ namespace DesafioFundamentos.Models
     {
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
+
         private List<string> veiculos = new List<string>();
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
@@ -14,8 +15,12 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // Implementado!!!!!
+            
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string aCar = Console.ReadLine();
+            veiculos.Add(aCar);
+
+
         }
 
         public void RemoverVeiculo()
@@ -26,21 +31,28 @@ namespace DesafioFundamentos.Models
             // *IMPLEMENTE AQUI*
             string placa = "";
 
+            placa = Console.ReadLine();
+
+
+
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
 
                 // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
+                string horas = Console.ReadLine();
+
+                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal 
                 // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
+                int hour = Int32.Parse(horas);
+                decimal valorTotal = precoInicial + precoPorHora * hour; 
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
+                                veiculos.Remove(placa);
 
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
+                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ " + valorTotal);
             }
             else
             {
@@ -54,8 +66,12 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+        
+                foreach(string valor in veiculos)
+                    {
+                        //Mostra veiculos registrados
+                        Console.WriteLine(valor);
+                    }
             }
             else
             {
